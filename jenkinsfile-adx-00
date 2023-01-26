@@ -10,20 +10,21 @@ pipeline {
                 //sh label:'playbook', script: "ssh ansible-controller ansible-playbook ./playbook/site.yml -i ./playbook/laboratory"
                 //***sh label:'playbook', script: "ssh ansible-controller ansible-playbook ./playbook_sw_installation/software_installation.yml -i ./playbook_sw_installation/inventory"
                 //sh 'echo hola mundo'
-                echo "Hello World!"
-                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-                //** Running 7 on http://localhost:8080/ **//
-                bat 'wmic computersystem get name'
-                //** C:\Users\rra12\.jenkins\workspace\adx-win04>wmic computersystem get name
-                //*MANGO
+
+                //ok:echo "Hello World!"
+                //ok:echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                //ok:bat 'wmic computersystem get name'
                 //** bat 'scp'
                 //** ok with .cmd
+
                 bat 'e:\\_dev\\sopra\\projects\\airbus\\00-TransformationPlan\\01.0-DevOps\\20230126\\scm-test.cmd'
+
                 //sh "echo Hello from the shell"
                 //sh "hostname"
                 //sh "uptime"
                 //**sh script: "scp $WORKSPACE ansible-controller:/home/$user/"
                 //bat 'scp -i e:\\_dev\\sopra\\projects\\airbus\\00-TransformationPlan\\01.0-DevOps\\20230126\\adx-devops $WORKSPACE rra@192.168.46.130:/home/rra/'
+
                 echo "my workspace content: ${env.WORKSPACE}"
                 echo "--------------"
                 echo $WORKSPACE
