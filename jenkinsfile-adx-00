@@ -12,6 +12,8 @@ pipeline {
                 //sh 'echo hola mundo'
                 echo "Hello World!"
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                //** Running 7 on http://localhost:8080/ **//
+                bat 'wmic computersystem get name'
                 //sh "echo Hello from the shell"
                 //sh "hostname"
                 //sh "uptime"
