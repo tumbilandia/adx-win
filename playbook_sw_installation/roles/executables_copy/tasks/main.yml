@@ -3,3 +3,4 @@
   ansible.windows.win_copy:
     src: '{{ source_folder }}'
     dest: '{{ dest_folder }}'
+    remote_src: yes
