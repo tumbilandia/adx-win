@@ -25,8 +25,8 @@ pipeline {
                 //**sh script: "scp $WORKSPACE ansible-controller:/home/$user/"
                 //bat 'scp -i e:\\_dev\\sopra\\projects\\airbus\\00-TransformationPlan\\01.0-DevOps\\20230126\\adx-devops $WORKSPACE rra@192.168.46.130:/home/rra/'
                 withEnv (['BASE_WORKSPACE=' + WORKSPACE]) {
-                  //bat 'scp -i e:\\_dev\\sopra\\projects\\airbus\\00-TransformationPlan\\01.0-DevOps\\20230126\\adx-devops playbook_sw_installation rra@192.168.46.130:/home/rra/playbook_sw_installation'
-                  bat 'dir'
+                  bat 'scp -i e:\\_dev\\sopra\\projects\\airbus\\00-TransformationPlan\\01.0-DevOps\\20230126\\adx-devops -r . rra@192.168.46.130:/home/rra/'
+                  //bat 'dir'
                   //targetDir = workspace
                 }
 
