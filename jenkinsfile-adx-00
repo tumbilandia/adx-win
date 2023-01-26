@@ -27,8 +27,7 @@ pipeline {
                 withEnv (['BASE_WORKSPACE=' + WORKSPACE]) {
                   //bat 'scp -i e:\\_dev\\sopra\\projects\\airbus\\00-TransformationPlan\\01.0-DevOps\\20230126\\adx-devops playbook_sw_installation rra@192.168.46.130:/home/rra/playbook_sw_installation'
                   bat 'dir'
-                  targetDir = workspace
-
+                  //targetDir = workspace
                 }
 
                 // C:\Users\rra12\.jenkins\workspace\adx-win04>scp -i e:\_dev\sopra\projects\airbus\00-TransformationPlan\01.0-DevOps\20230126\adx-devops playbook_sw_installation rra@192.168.46.130:/home/rra/playbook_sw_installation
