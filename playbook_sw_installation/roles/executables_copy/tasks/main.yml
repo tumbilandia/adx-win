@@ -1,0 +1,5 @@
+---
+- name: Executables files copy
+  ansible.windows.win_copy:
+    src: '{{ source_folder }}'
+    dest: '{{ dest_folder }}'

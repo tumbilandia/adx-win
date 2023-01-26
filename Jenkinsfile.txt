@@ -1,0 +1,64 @@
+//El jobs o tarea que se crea en Jenkins tiene que ser de tipo pipeline
+pipeline {
+
+    agent any
+
+
+        stages {
+
+          stage('Properties') {
+            steps {
+              script {
+                properties(
+                  [parameters(
+                    [
+                    /* Eleccion de branch con plugin gitparameter en caso de que estuviera instalado
+                    gitParameter(branch: '',
+                    branchFilter: '.*',
+                    defaultValue: 'origin/master',
+                    description: '',
+                    name: 'branch',
+                    quickFilterEnabled: false,
+                    selectedValue: 'NONE',
+                    sortMode: 'NONE',
+                    tagFilter: '*',
+                    type: 'GitParameterDefinition'),
+                    */
+
+                    choice(choices: ['master', 'develop'],
+                    description: '', name: 'branch'),
+                    string(defaultValue: 'AZ0000', name: 'user'),
+                    password(name: 'passwd')])])
+              }
+            }
+          }
+
+            //Conexion al repositorio mediante comando checkout de jenkins
+           /* stage('Checkout code') {
+                checkout(
+                    [$class: 'GitSCM',
+                    branches: [[name: '${branch}']],
+                    doGenerateSubmoduleConfigurtions:false,
+                    extension: [],
+                    submoduleCfg [],
+                    userRemoteConfigs: [[credentialsId: '',url "repo"]]
+                    ]
+                )
+            }*/
+
+            /*Conexion al repositorio mediante comando git
+            es necesario pasarle la credencial del repo previamente añadida a jenkins asi como la url del repo*/
+
+            git credentialsId: '768c3501-adfc-4659-8552-b0c5d295d981', url: 'gitolite3@172.17.0.1:adxdevops'
+
+            stage('Run playbook') {
+              steps{
+                //Copia el contenido bajado del repo a la maquina controller
+                sh script: "scp $WORKSPACE ansible-controller:/home/$user/"
+                //Ejecuta el playbook en la maquina ansible controller, el user y pass se pasan como parametro con -e ${user} -e ${passwd}
+                sh label:'playbook', script: "ssh ansible-controller ansible-playbook ./playbook/site.yml -i ./playbook/laboratory"
+              }
+
+            }
+        }
+}
