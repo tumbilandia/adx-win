@@ -9,7 +9,11 @@ pipeline {
                 //Ejecuta el playbook en la maquina ansible controller, el user y pass se pasan como parametro con -e ${user} -e ${passwd}
                 //sh label:'playbook', script: "ssh ansible-controller ansible-playbook ./playbook/site.yml -i ./playbook/laboratory"
                 //***sh label:'playbook', script: "ssh ansible-controller ansible-playbook ./playbook_sw_installation/software_installation.yml -i ./playbook_sw_installation/inventory"
-                sh 'echo hola mundo'
+                //sh 'echo hola mundo'
+                echo "Hello World!"
+                sh "echo Hello from the shell"
+                sh "hostname"
+                sh "uptime"
               }
             }
         }
