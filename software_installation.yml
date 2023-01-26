@@ -1,0 +1,6 @@
+---
+- name: Software installation
+  hosts: windows
+  roles:
+    - executables_copy
+    - software_installation
