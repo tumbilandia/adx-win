@@ -26,7 +26,8 @@ pipeline {
                 //bat 'scp -i e:\\_dev\\sopra\\projects\\airbus\\00-TransformationPlan\\01.0-DevOps\\20230126\\adx-devops $WORKSPACE rra@192.168.46.130:/home/rra/'
                 withEnv (['BASE_WORKSPACE=' + WORKSPACE]) {
                   //ok:bat 'scp -i e:\\_dev\\sopra\\projects\\airbus\\00-TransformationPlan\\01.0-DevOps\\20230126\\adx-devops -r *.* rra@192.168.46.130:/home/rra/'
-                  bat 'scp -i e:\\_dev\\sopra\\projects\\airbus\\00-TransformationPlan\\01.0-DevOps\\20230126\\adx-devops ./* rra@192.168.46.130:/home/rra/jenkins_workspace'
+                  //bat 'scp -i e:\\_dev\\sopra\\projects\\airbus\\00-TransformationPlan\\01.0-DevOps\\20230126\\adx-devops ./* rra@192.168.46.130:/home/rra/jenkins_workspace'
+                  bat 'scp -i e:\\_dev\\sopra\\projects\\airbus\\00-TransformationPlan\\01.0-DevOps\\20230126\\adx-devops -r ./ rra@192.168.46.130:/home/rra/jenkins_workspace'
                   //bat 'dir'
                   //targetDir = workspace
                 }
