@@ -49,7 +49,7 @@ pipeline {
             /*Conexion al repositorio mediante comando git
             es necesario pasarle la credencial del repo previamente añadida a jenkins asi como la url del repo*/
 
-            git credentialsId: '768c3501-adfc-4659-8552-b0c5d295d981', url: 'gitolite3@172.17.0.1:adxdevops'
+            /////////////////git credentialsId: '768c3501-adfc-4659-8552-b0c5d295d981', url: 'gitolite3@172.17.0.1:adxdevops'
 
             stage('Run playbook') {
               steps{
