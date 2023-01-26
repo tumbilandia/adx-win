@@ -14,6 +14,10 @@ pipeline {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
                 //** Running 7 on http://localhost:8080/ **//
                 bat 'wmic computersystem get name'
+                //** C:\Users\rra12\.jenkins\workspace\adx-win04>wmic computersystem get name
+                //*MANGO
+                bat 'scp'
+                bat 'e:\_dev\sopra\projects\airbus\00-TransformationPlan\01.0-DevOps\20230126\scm-test.cmd'
                 //sh "echo Hello from the shell"
                 //sh "hostname"
                 //sh "uptime"
