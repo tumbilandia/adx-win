@@ -16,7 +16,7 @@ pipeline {
                 bat 'wmic computersystem get name'
                 //** C:\Users\rra12\.jenkins\workspace\adx-win04>wmic computersystem get name
                 //*MANGO
-                bat 'scp'
+                //** bat 'scp'
                 bat 'e:\\_dev\\sopra\\projects\\airbus\\00-TransformationPlan\\01.0-DevOps\\20230126\\scm-test.cmd'
                 //sh "echo Hello from the shell"
                 //sh "hostname"
