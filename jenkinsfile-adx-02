@@ -1,0 +1,26 @@
+//El jobs o tarea que se crea en Jenkins tiene que ser de tipo pipeline
+pipeline {
+    agent any
+        stages {
+
+            stage('Copy git content to ansible vm') {
+              steps{
+                //Copia el contenido bajado del repo a la maquina controller
+                withEnv (['BASE_WORKSPACE=' + WORKSPACE]) {
+                  bat 'ssh -i e:\\_dev\\sopra\\projects\\airbus\\00-TransformationPlan\\01.0-DevOps\\20230126\\adx-devops rra@192.168.46.130 "rm -r -f /home/rra/jenkins_workspace"'
+                  //bat 'scp -i e:\\_dev\\sopra\\projects\\airbus\\00-TransformationPlan\\01.0-DevOps\\20230126\\adx-devops -r playbook_sw_installation rra@192.168.46.130:/home/rra/jenkins_workspace/'
+                }
+              }
+            }
+
+            stage('Run ansible playbook') {
+              steps{
+                //Ejecuta el playbook en la maquina ansible controller, el user y pass se pasan como parametro con -e ${user} -e ${passwd}
+                //sh label:'playbook', script: "ssh ansible-controller ansible-playbook ./playbook/site.yml -i ./playbook/laboratory"
+                //sh label:'playbook', script: "ssh ansible-controller ansible-playbook ./playbook_sw_installation/software_installation.yml -i ./playbook_sw_installation/inventory"
+                //ok:bat 'ssh -i e:\\_dev\\sopra\\projects\\airbus\\00-TransformationPlan\\01.0-DevOps\\20230126\\adx-devops rra@192.168.46.130 "/home/rra/adx/test01/mytest.sh"'
+              }
+            }
+
+        }
+}
