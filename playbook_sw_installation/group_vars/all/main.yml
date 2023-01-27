@@ -1,2 +1,3 @@
-source_folder: e:\share\jenkins.msi
+source_folder: \\mango\share\jenkins.msi
+#source_folder: e:\share\jenkins.msi
 dest_folder: e:\_download\20230127\
