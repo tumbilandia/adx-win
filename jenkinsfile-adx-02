@@ -6,7 +6,7 @@ pipeline {
             stage('Clean destination') {
               steps{
                 //Elimina el contenido de la maquina controller
-                bat 'ssh -i e:\\_dev\\sopra\\projects\\airbus\\00-TransformationPlan\\01.0-DevOps\\20230126\\adx-devops rra@192.168.46.130 "rm -r -f /home/rra/jenkins_workspace"'
+                bat 'ssh -i d:\\_dev\\sopra\\projects\\airbus\\00-TransformationPlan\\01.0-DevOps\\20230126\\adx-devops rra@192.168.46.130 "rm -r -f /home/rra/jenkins_workspace"'
               }
             }
 
@@ -14,7 +14,7 @@ pipeline {
               steps{
                 //Copia el contenido bajado del repo a la maquina controller
                 withEnv (['BASE_WORKSPACE=' + WORKSPACE]) {
-                  bat 'scp -i e:\\_dev\\sopra\\projects\\airbus\\00-TransformationPlan\\01.0-DevOps\\20230126\\adx-devops -r playbook_sw_installation rra@192.168.46.130:/home/rra/jenkins_workspace/'
+                  bat 'scp -i d:\\_dev\\sopra\\projects\\airbus\\00-TransformationPlan\\01.0-DevOps\\20230126\\adx-devops -r playbook_sw_installation rra@192.168.46.130:/home/rra/jenkins_workspace/'
                 }
               }
             }
@@ -24,7 +24,7 @@ pipeline {
                 //Ejecuta el playbook en la maquina ansible controller, el user y pass se pasan como parametro con -e ${user} -e ${passwd}
                 //sh label:'playbook', script: "ssh ansible-controller ansible-playbook ./playbook/site.yml -i ./playbook/laboratory"
                 //sh label:'playbook', script: "ssh ansible-controller ansible-playbook ./playbook_sw_installation/software_installation.yml -i ./playbook_sw_installation/inventory"
-                bat 'ssh -i e:\\_dev\\sopra\\projects\\airbus\\00-TransformationPlan\\01.0-DevOps\\20230126\\adx-devops rra@192.168.46.130 "sh /home/rra/jenkins_workspace/software_installation.sh"'
+                bat 'ssh -i d:\\_dev\\sopra\\projects\\airbus\\00-TransformationPlan\\01.0-DevOps\\20230126\\adx-devops rra@192.168.46.130 "sh /home/rra/jenkins_workspace/software_installation.sh"'
               }
             }
 */
