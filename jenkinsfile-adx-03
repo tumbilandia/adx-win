@@ -7,20 +7,24 @@ pipeline {
               steps{
                 //Elimina el contenido de la maquina controller
                 //bat 'ssh -i d:\\_dev\\sopra\\projects\\airbus\\00-TransformationPlan\\01.0-DevOps\\20230126\\adx-devops rra@192.168.46.130 "rm -r -f /home/rra/jenkins_workspace"'
-                sshPublisher(
-                continueOnError: false, failOnError: true,
-                publishers: [
-                    sshPublisherDesc(
-                        configName: "ansible-controller",
-                        verbose: true,
-                        transfers: [
-                            sshTransfer(execCommand: "/bin/rm -rf /home/rra/jenkins_workspace"),
-                        ]
-                    )
-                ]
 
-
-                )
+                stage('SSH transfer') {
+                        steps([$class: 'BapSshPromotionPublisherPlugin']) {
+                            sshPublisher(
+                                continueOnError: false, failOnError: true,
+                                publishers: [
+                                    sshPublisherDesc(
+                                        configName: "ansible-controller",
+                                        verbose: true,
+                                        transfers: [
+                                            sshTransfer(execCommand: "/bin/rm -rf /home/rra/xx"),
+                                            //sshTransfer(sourceFiles: "helm/**",)
+                                        ]
+                                    )
+                                ]
+                            )
+                        }
+                    }
 
               }
 
