@@ -14,7 +14,8 @@ pipeline {
                 //bat 'ssh ansible-controller "rm -r -f /home/rra/jenkins_workspace"'
                 //bat('ssh ansible-controller "ll /home/rra"')
                 //bat 'echo "Running " $BUILD_ID " on " ${env.JENKINS_URL}'
-                bat('echo "BUILD_NUMBER" %BUILD_NUMBER%')
+
+                //bat('echo "BUILD_NUMBER" %BUILD_NUMBER%')
 
 
                 sshPublisher(
@@ -28,10 +29,12 @@ pipeline {
                         ]
                     )
                 ]
-            )
-
-
+                )
             }
+
+
+
+
         }
     }
 }
