@@ -2,7 +2,6 @@
   #win_package:
   ansible.windows.win_package:
     path: '{{ dest_folder }}'
-    register: adx
     arguments:
     - /q
 
