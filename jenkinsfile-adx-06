@@ -1,0 +1,82 @@
+pipeline {
+    agent any
+    stages {
+
+        stage('Properties') {
+            steps {
+              script {
+                properties(
+                  [parameters(
+                    [
+                    /* Eleccion de branch con plugin gitparameter en caso de que estuviera instalado
+                    https://plugins.jenkins.io/git-parameter/
+                    gitParameter(branch: '',
+                    branchFilter: '.*',
+                    defaultValue: 'origin/master',
+                    description: '',
+                    name: 'branch',
+                    quickFilterEnabled: false,
+                    selectedValue: 'NONE',
+                    sortMode: 'NONE',
+                    tagFilter: '*',
+                    type: 'GitParameterDefinition'),
+                    */
+
+                    //choice(choices: ['master', 'develop'],
+                    choice(choices: ['main', 'develop'],
+                    description: '', name: 'branch'),
+                    string(defaultValue: 'ansible', name: 'user'),
+                    password(name: 'passwd')])])
+              }
+            }
+          }
+
+        stage('Copy repo content to ansible controller #1') {
+            steps {
+                /*
+                https://updates.jenkins-ci.org/download/plugins/publish-over-ssh/
+                https://plugins.jenkins.io/publish-over-ssh/
+                */
+                sshPublisher(
+                continueOnError: false, failOnError: true,
+                publishers: [
+                    sshPublisherDesc(
+                        configName: "ansible-controller",
+                        verbose: true,
+                        transfers: [
+                            sshTransfer(execCommand: "/bin/rm -rf /home/rra/jenkins_workspace"),
+                            sshTransfer(sourceFiles: "playbook_sw_installation/**/*",)
+                        ]
+                    )
+                ]
+                )
+            // end step
+            }
+
+        // end stage
+        }
+
+
+        stage('Execute ansible playbook #2') {
+            steps {
+                sshPublisher(
+                continueOnError: false, failOnError: true,
+                publishers: [
+                    sshPublisherDesc(
+                        configName: "ansible-controller",
+                        verbose: true,
+                        transfers: [
+                            sshTransfer(execCommand: "/bin/sh /home/rra/playbook_sw_installation/software_installation.sh ${user} ${passwd}"),
+                        ]
+                    )
+                ]
+                )
+            // end step
+            }
+
+        // end stage
+        }
+
+
+    }
+}
