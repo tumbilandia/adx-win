@@ -3,6 +3,8 @@ pipeline {
     stages {
 
         stage('Example SSH Username with private key #1') {
+            // https://updates.jenkins-ci.org/download/plugins/publish-over-ssh/
+            //https://plugins.jenkins.io/publish-over-ssh/
             steps {
                 sshPublisher(
                 continueOnError: false, failOnError: true,
@@ -33,7 +35,7 @@ pipeline {
                         configName: "ansible-controller",
                         verbose: true,
                         transfers: [
-                            sshTransfer(execCommand: "ls -rf /home/rra/playbook_sw_installation"),
+                            sshTransfer(cleanRemote: true, execCommand: "ls -rf /home/rra/playbook_sw_installation"),
                         ]
                     )
                 ]
