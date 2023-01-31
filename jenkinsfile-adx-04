@@ -1,0 +1,48 @@
+pipeline {
+    agent any
+    stages {
+
+        stage('Example SSH Username with private key #1') {
+            steps {
+                sshPublisher(
+                continueOnError: false, failOnError: true,
+                publishers: [
+                    sshPublisherDesc(
+                        configName: "ansible-controller",
+                        verbose: true,
+                        transfers: [
+                            sshTransfer(execCommand: "/bin/rm -rf /home/rra/jenkins_workspace"),
+                        ]
+                    )
+                ]
+                )
+            // end step
+            }
+
+        // end stage
+        }
+
+
+        stage('Example SSH Username with private key #2') {
+            steps {
+                sshPublisher(
+                continueOnError: false, failOnError: true,
+                publishers: [
+                    sshPublisherDesc(
+                        configName: "ansible-controller",
+                        verbose: true,
+                        transfers: [
+                            sshTransfer(execCommand: "/bin/rm -rf /home/rra/jenkins_workspace"),
+                        ]
+                    )
+                ]
+                )
+            // end step
+            }
+
+        // end stage
+        }
+
+
+    }
+}
