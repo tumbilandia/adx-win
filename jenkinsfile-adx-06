@@ -36,6 +36,7 @@ pipeline {
                 /*
                 https://updates.jenkins-ci.org/download/plugins/publish-over-ssh/
                 https://plugins.jenkins.io/publish-over-ssh/
+                https://plugins.jenkins.io/git-parameter/
                 https://acozine.github.io/html/user_guide/windows_usage.html
                 */
                 sshPublisher(
