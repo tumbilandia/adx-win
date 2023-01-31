@@ -6,6 +6,6 @@
     - /q
   register: adx
 
-- debug: msg="{{ adx.stdout }}"
+#- debug: msg="{{ adx.stdout }}"
 
-- debug: msg="{{ adx.stderr }}"
+#- debug: msg="{{ adx.stderr }}"
