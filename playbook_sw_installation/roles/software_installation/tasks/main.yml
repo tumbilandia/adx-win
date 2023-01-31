@@ -4,3 +4,8 @@
     path: '{{ dest_folder }}'
     arguments:
     - /q
+    register: adx
+
+- debug: msg="{{ adx.stdout }}"
+
+- debug: msg="{{ adx.stderr }}"
