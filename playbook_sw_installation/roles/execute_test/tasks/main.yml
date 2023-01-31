@@ -1,6 +1,6 @@
 - name: execute batch
   #script: {{ dest_folder }}
-  win_command: {{ dest_folder }}
+  win_command: "{{ dest_folder }}"
   register: adx
 
 - debug: msg="{{ adx.stdout }}"
