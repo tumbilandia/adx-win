@@ -38,12 +38,13 @@ pipeline {
                 https://plugins.jenkins.io/publish-over-ssh/
                 https://plugins.jenkins.io/git-parameter/
                 https://acozine.github.io/html/user_guide/windows_usage.html
+                https://github.com/jenkinsci/publish-over-plugin
                 */
                 sshPublisher(
                 continueOnError: false, failOnError: true,
                 publishers: [
                     sshPublisherDesc(
-                        configName: "ansible-controller",
+                        configName: "ansiblex",
                         verbose: true,
                         transfers: [
                             sshTransfer(execCommand: "/bin/rm -rf /home/rra/jenkins_workspace"),
@@ -65,7 +66,7 @@ pipeline {
                 continueOnError: false, failOnError: true,
                 publishers: [
                     sshPublisherDesc(
-                        configName: "ansible-controller",
+                        configName: "ansiblex",
                         verbose: true,
                         transfers: [
                             sshTransfer(execCommand: "/bin/sh /home/rra/playbook_sw_installation/software_installation.sh ${user} ${passwd}"),
