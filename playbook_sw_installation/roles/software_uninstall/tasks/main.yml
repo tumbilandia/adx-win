@@ -1,0 +1,9 @@
+- name: sowftware uninstall
+  #gather_facts: no
+  # https://www.jenkins.io/doc/book/installing/windows/#silent-install-with-the-msi-installers
+  ansible.windows.win_package:
+    path: '{{ dest_folder }}'
+    state: absent
+  register: adx
+
+- debug: var=adx

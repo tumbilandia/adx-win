@@ -3,5 +3,6 @@
   hosts: windows
   roles:
     - executables_copy
-    - software_installation
+    #- software_installation
     #- execute_test
+    - software_uninstall
