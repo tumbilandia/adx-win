@@ -4,4 +4,4 @@
   roles:
     - executables_copy
     #- software_installation
-    - execute_test
+    #- execute_test
