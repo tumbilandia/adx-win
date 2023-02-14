@@ -3,8 +3,9 @@
   ansible.windows.win_package:
     path: '{{ dest_folder }}'
     arguments:
-    - /installdir="d:\temp\jenkins"
-    - /JAVA_HOME="c:\dev\java\openjdk11"
+    - /quiet
+    - installdir="d:\temp\jenkins"
+    - JAVA_HOME="c:\dev\java\openjdk11"
   register: adx
 
 #- debug: msg="{{ adx.stdout }}"
