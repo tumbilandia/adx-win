@@ -1,5 +1,5 @@
-- name: sowftware uninstall
-  #gather_facts: no
+- name: software uninstall
+  #gather_facts: false
   # https://www.jenkins.io/doc/book/installing/windows/#silent-install-with-the-msi-installers
   ansible.windows.win_package:
     path: '{{ dest_folder }}'
