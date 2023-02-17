@@ -10,3 +10,5 @@ ansible_winrm_transport=ntlm
 ansible_winrm_port=5985
 ansible_winrm_server_cert_validation=ignore
 become: true
+#become_user: Administrator
+#become_method: runas

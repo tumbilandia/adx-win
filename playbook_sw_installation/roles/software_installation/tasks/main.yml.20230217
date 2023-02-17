@@ -1,0 +1,28 @@
+- name: sowftware installation
+  #gather_facts: false
+  # https://www.jenkins.io/doc/book/installing/windows/#silent-install-with-the-msi-installers
+  # https://docs.ansible.com/ansible/latest/collections/ansible/windows/win_package_module.html
+  #win_package:
+  ansible.windows.win_package:
+    path: '{{ dest_folder }}'
+    arguments: '/quiet /L*vx! "d:\temp\jenkinsxxx.xx.log" installdir="d:\temp\jenkinsx" port=7777 JAVA_HOME="c:\dev\java\openjdk11"'
+    #arguments: '/quiet /L*V "d:\temp\jenkinsxxx.xx.log" installdir="d:\temp\jenkinsx" port=7777 JAVA_HOME="c:\dev\java\openjdk11"'
+    #- /quiet
+    #- /L*V "d:\temp\jenkinsxxx.xx.log"
+    #- installdir="d:\temp\jenkinsx"
+    #- /L*V "d:\temp\jenkinsxxx.xx.log"
+    #_ inst: nos"
+    #- JAVA_HOME="c:\dev\java\openjdk11"
+    log_path: d:\temp\jenkinsxxx.zz.{{lookup('pipe', 'date +%Y%m%dT%H%M%S')}}.log
+  register: adx
+
+#- debug:
+#    var: adx
+
+#- debug: var=adx
+- debug: var=adx.rc
+
+#- debug: msg="{{ adx.stdout }}"
+
+#- debug: msg="{{ adx.stderr }}"
+#- debug: msg="{{ adx.stderr }}"
