@@ -64,7 +64,7 @@ pipeline {
                 continueOnError: false, failOnError: true,
                 publishers: [
                     sshPublisherDesc(
-                        configName: "madvl038d",
+                        configName: "ansible",
                         verbose: true,
                         transfers: [
                             sshTransfer(execCommand: "/bin/sh /home/rra/playbook_sw_installation/software_installation.sh"),
