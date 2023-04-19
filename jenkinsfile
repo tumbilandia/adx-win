@@ -45,7 +45,6 @@ pipeline {
                         configName: "ansible",
                         verbose: true,
                         transfers: [
-                            #sshTransfer(execCommand: "/bin/rm -rf /home/rra/ansible/playbook_sw_installation"),
                             sshTransfer(sourceFiles: "playbook_sw_installation/**/*",)
                         ]
                     )
