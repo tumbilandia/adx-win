@@ -24,7 +24,7 @@ pipeline {
 
                     //choice(choices: ['master', 'develop'],
                     choice(choices: ['master', 'develop'],
-                    description: '', name: 'branch'),
+                    description: '', name: 'branch')
                     )])])
               }
             }
