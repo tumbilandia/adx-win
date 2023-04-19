@@ -1,6 +1,8 @@
 ---
 - name: Software installation
   hosts: windows
+  vars_files:
+    - 'windows_credentials.yml'
   roles:
     - executables_copy
     #- software_installation
