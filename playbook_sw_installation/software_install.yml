@@ -1,9 +1,0 @@
----
-- name: Software installation
-  hosts: windows
-  gather_facts: false
-  roles:
-    - executables_copy
-    - software_installation
-    #- execute_test
-    #- software_uninstall
