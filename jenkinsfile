@@ -67,7 +67,8 @@ pipeline {
                         verbose: true,
                         transfers: [
                             sshTransfer(execCommand: "cd /home/rra/playbook_sw_installation"),
-                            sshTransfer(execCommand: "ansible-playbook software_installation.yml"),
+                            sshTransfer(execCommand: "pwd"),
+                            sshTransfer(execCommand: "ansible-playbook /home/rra/playbook_sw_installation/software_installation.yml"),
                             //sshTransfer(execCommand: "/bin/sh /home/rra/playbook_sw_installation/software_installation.sh"),
                             //sshTransfer(execCommand: "/bin/sh /home/zaaz0523/devops/shell_test.sh"),
                         ]
