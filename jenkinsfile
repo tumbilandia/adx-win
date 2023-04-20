@@ -24,9 +24,8 @@ pipeline {
 
                     //choice(choices: ['master', 'develop'],
                     choice(choices: ['main', 'develop'],
-                    description: '', name: 'branch'),
-                    string(defaultValue: 'ZADNAZ0523', name: 'user'),
-                    password(name: 'passwd')])])
+                    description: '', name: 'branch')
+                    ])])
               }
             }
           }
