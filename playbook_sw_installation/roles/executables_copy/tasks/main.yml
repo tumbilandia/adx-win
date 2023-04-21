@@ -1,11 +1,14 @@
 ---
 - name: Executables files copy
-  ansible.windows.win_copy:
-    src: '{{ source_folder }}'
-    dest: '{{ dest_folder }}'
-    remote_src: yes
+  tasks:
+    - name:
+      ansible.windows.win_copy:
+      src: '{{ source_folder }}'
+      dest: '{{ dest_folder }}'
+      remote_src: yes
+      register: grep_ok
 
-  register: grep_ok
-
-- debug:
-    msg: "{{ grep_ok.results | map(attribute='stdout') | list }}"
+    - name: Print stdout
+      debug:
+        msg: "{{ grep_ok.stdout }}"
+#       msg: "{{ grep_ok.results | map(attribute='stdout') | list }}"
