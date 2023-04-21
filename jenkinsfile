@@ -65,13 +65,13 @@ pipeline {
                         configName: "ansible",
                         verbose: true,
                         transfers: [
-                            //sshTransfer(execCommand: "cd /home/rra/playbook_sw_installation/"),
-                            sshTransfer(execCommand: "echo '********************'"),
                             //sshTransfer(execCommand: "ansible-playbook software_installation.yml -i hosts.ini"),
-                            sshTransfer(execCommand: "ansible-playbook /home/rra/playbook_sw_installation/software_installation.yml -i /home/rra/playbook_sw_installation/hosts.ini --vault-password-file /home/rra/playbook_sw_installation/vault-password"),
-                            sshTransfer(execCommand: "echo '********************'"),
-                            //sshTransfer(execCommand: "/bin/sh ~/playbook_sw_installation/software_installation.sh"),
-                            //sshTransfer(execCommand: "/bin/sh /home/zaaz0523/devops/shell_test.sh"),
+                            //sshTransfer(execCommand: "ansible-playbook /home/rra/playbook_sw_installation/software_installation.yml -i /home/rra/playbook_sw_installation/hosts.ini --vault-password-file /home/rra/playbook_sw_installation/vault-password"),
+                            sshTransfer(execCommand: "ansible-playbook \
+                                                           && /home/rra/playbook_sw_installation/software_installation.yml \
+                                                           && -i /home/rra/playbook_sw_installation/hosts.ini \
+                                                           && --vault-password-file /home/rra/playbook_sw_installation/vault-password"
+                                                           ),
                         ]
                     )
                 ]
