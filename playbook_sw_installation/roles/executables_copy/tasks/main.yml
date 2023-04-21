@@ -1,14 +1,19 @@
 ---
 - name: Executables files copy
-  tasks:
-    - name:
-      ansible.windows.win_copy:
-      src: '{{ source_folder }}'
-      dest: '{{ dest_folder }}'
-      remote_src: yes
-      register: grep_ok
+  ansible.windows.win_copy:
+    src: '{{ source_folder }}'
+    dest: '{{ dest_folder }}'
+    remote_src: yes
 
-    - name: Print stdout
-      debug:
-        msg: "{{ grep_ok.stdout }}"
-#       msg: "{{ grep_ok.results | map(attribute='stdout') | list }}"
+  register: grep_ok
+
+#- debug: var=grep_ok.stdout
+- name: Debug
+  debug:
+    #msg: "host:{{ ansible_hostname }} | {{ grep_ok }}"
+    msg:
+      - "##host##:{{ ansible_hostname }} | {{ grep_ok }}"
+      - "##ansible_play_hosts: {{ ansible_play_hosts }}"
+      - "##inventory_hostname: {{ inventory_hostname }}"
+      - "##ansible_user: {{ ansible_user }}"
+#    msg: "{{ grep_ok.results | map(attribute='stdout') | list }}"
