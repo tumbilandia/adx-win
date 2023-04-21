@@ -65,8 +65,8 @@ pipeline {
                         configName: "ansible",
                         verbose: true,
                         transfers: [
-                            //sshTransfer(execCommand: "ansible-playbook software_installation.yml -i hosts.ini"),
-                            sshTransfer(execCommand: "ansible-playbook /home/rra/playbook_sw_installation/software_installation.yml -i /home/rra/playbook_sw_installation/hosts.ini --vault-password-file /home/rra/playbook_sw_installation/vault-password"),
+                            sshTransfer(execCommand: "ansible-playbook software_installation.yml"),
+                            //sshTransfer(execCommand: "ansible-playbook /home/rra/playbook_sw_installation/software_installation.yml -i /home/rra/playbook_sw_installation/hosts.ini --vault-password-file /home/rra/playbook_sw_installation/vault-password"),
                         ]
                     )
                 ]
