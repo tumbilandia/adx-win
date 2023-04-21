@@ -4,3 +4,8 @@
     src: '{{ source_folder }}'
     dest: '{{ dest_folder }}'
     remote_src: yes
+
+  register: grep_ok
+
+- debug:
+    msg: "{{ grep_ok.results | map(attribute='stdout') | list }}"
