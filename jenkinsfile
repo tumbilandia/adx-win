@@ -36,6 +36,7 @@ pipeline {
                 https://updates.jenkins-ci.org/download/plugins/publish-over-ssh/
                 https://plugins.jenkins.io/publish-over-ssh/
                 https://acozine.github.io/html/user_guide/windows_usage.html
+                https://dzone.com/articles/intro-to-jenkins-pipeline-and-using-publish-over-s
                 */
                 sshPublisher(
                 continueOnError: false, failOnError: true,
